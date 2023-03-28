@@ -1,0 +1,7 @@
+<svg class="icon__svg" width="26" height="26" viewBox="0 0 26 26" aria-labelledby="icon-history-organisation-history"
+    role="img">
+    <title id="icon-history-organisation-history">Organisation history</title>
+    <path class="icon__fill" fill-rule="evenodd"
+        d="M13.008 2.808C18.628 2.808 23.2 7.38 23.2 13s-4.572 10.192-10.192 10.192c-2.722 0-5.282-1.06-7.207-2.985a.999.999 0 1 1 1.414-1.414 8.14 8.14 0 0 0 5.793 2.399c4.517 0 8.192-3.675 8.192-8.192s-3.675-8.192-8.192-8.192c-4.363 0-7.93 3.431-8.17 7.735l1.087-1.086a1 1 0 0 1 1.414 1.414l-2.816 2.816a.997.997 0 0 1-1.414 0L.293 12.871a1 1 0 0 1 1.414-1.414l1.13 1.13c.219-5.427 4.69-9.779 10.17-9.779zm0 3.64a1 1 0 0 1 1 1V12h3.462a1 1 0 0 1 0 2h-3.462v.76a1 1 0 0 1-2 0V14h-1.125a1 1 0 1 1 0-2h1.125V7.449a1 1 0 0 1 1-1z">
+    </path>
+</svg>

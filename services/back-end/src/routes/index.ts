@@ -1,0 +1,1 @@
+export { dataElementDefinitionRoute } from "./dataElement.route"

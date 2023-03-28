@@ -1,0 +1,131 @@
+.wrap {
+  position: relative;
+}
+.wrap:hover .taskNode__deletebtn {
+  opacity: 1;
+}
+
+.taskNode {
+  position: relative;
+  width: 20rem;
+  background: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #d7dce1;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  border-radius: 8px;
+}
+.taskNode > * {
+  width: 100%;
+}
+.taskNode__deletebtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  background: #ff7e7e;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(50%, -50%);
+  border-radius: 50px;
+  outline: none;
+  border-color: #d7dce1;
+  transition: all 0.2s ease-out;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+.taskNode__title {
+  margin: auto;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  height: 48px;
+  border-bottom: 1px solid #d7dce1;
+}
+.taskNode__title > input {
+  padding: 12px 20px;
+  outline: none;
+  border: none;
+  transition: all 0.2s ease-out;
+  font-size: 24px;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 16px;
+}
+.taskNode__title > input:focus {
+  background: #eee;
+}
+.taskNode__title > button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+.taskNode__title > button:hover {
+  filter: brightness(1.1);
+}
+.taskNode__title > button > svg {
+  transform: scale(0.6);
+}
+.taskNode__outcome {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 12px;
+}
+.taskNode__handle {
+  z-index: 2;
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  top: 24px;
+  left: 0;
+  background: #d7dce1;
+  transform: translate(-50%, -50%);
+}
+
+.outcome {
+  width: 60px;
+  text-align: center;
+  height: 100% !important;
+  padding: 8px;
+}
+.outcome__item {
+  position: relative;
+  background: #fff;
+  width: 100%;
+  padding: 1rem 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #d7dce1;
+}
+.outcome-wrap {
+  width: 100%;
+}
+.outcome__handle {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  top: 50%;
+  background-color: rgb(189, 196, 204);
+  right: 0;
+  transform: translate(50%, -50%) !important;
+  border: none;
+}
+
+.done {
+  background: rgba(103, 247, 156, 0.4);
+}
+
+.fail {
+  background: rgba(255, 101, 101, 0.4);
+}/*# sourceMappingURL=index.module.css.map */

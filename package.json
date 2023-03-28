@@ -1,0 +1,20 @@
+{
+    "name": "pnpm-mono",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "pnpm --stream -r start",
+        "start:dev": "pnpm --stream -r start:dev",
+        "build": "pnpm --stream -r run build",
+        "test": "pnpm --stream -r run test"
+    },
+    "dependencies": {
+        "jest": "^29.3.1",
+        "@ithan/core": "workspace:*",
+        "@data-grid/preact": "workspace:*"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}

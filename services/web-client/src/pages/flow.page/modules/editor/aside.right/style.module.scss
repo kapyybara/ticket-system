@@ -1,0 +1,47 @@
+.container :global {
+  width: 220px;
+  min-width: 180px;
+  max-width: 480px;
+  background-color: #f6f6f6;
+  border-left: 1px solid #ddd;
+  position: relative;
+
+  span.resizer-y {
+    width: 7px;
+    height: 100%;
+    position: absolute;
+    left: -4px;
+    top: 0;
+
+    &:hover,
+    &.dragging {
+      background-color: #cecece;
+      cursor: ew-resize;
+      opacity: 0.5;
+    }
+  }
+
+  header {
+    padding: 16px;
+    border-bottom: 1px solid #ddd;
+
+    display: flex;
+    column-gap: 8px;
+  }
+
+  .field {
+    padding: 16px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 8px;
+    row-gap: 8px;
+
+    > input {
+      height: 24px;
+    }
+
+    > div.select > div {
+      min-height: 24px;
+    }
+  }
+}

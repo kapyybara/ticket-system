@@ -1,0 +1,10 @@
+.container :global {
+  flex: 1;
+  display: flex;
+
+  :global > nav {
+    background-color: #eee;
+    min-width: 220px;
+    border-right: 1px solid #ddd;
+  }
+}

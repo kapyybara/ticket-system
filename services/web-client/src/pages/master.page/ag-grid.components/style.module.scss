@@ -1,0 +1,9 @@
+.ag_cell:global {
+  &.type-cell {
+    display: flex;
+    column-gap: 4px;
+    > span {
+      text-transform: capitalize;
+    }
+  }
+}

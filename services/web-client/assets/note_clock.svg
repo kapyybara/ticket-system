@@ -1,0 +1,18 @@
+<svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M10.5,1.5L4.5,1.5C3.677,1.5 3,2.177 3,3L3,15C3,15.823 3.677,16.5 4.5,16.5L13.5,16.5C14.323,16.5 15,15.823 15,15L15,6L10.5,1.5Z" />
+    <path d="M10.5,1.5L10.5,6L15,6" />
+    <g transform="matrix(0.681014,0,0,1,1.91392,0)">
+        <path d="M12,9.75L6,9.75" />
+    </g>
+    <g transform="matrix(0.698267,0,0,1,1.8104,0)">
+        <path d="M12,12.75L6,12.75" />
+    </g>
+    <path d="M7.5,6.75L6,6.75" />
+    <g transform="matrix(0.839703,0,0,0.839703,7.22744,2.23095)">
+        <g transform="matrix(1,0,0,1,-2.8534,-1.6539)">
+            <circle cx="11.853" cy="13.124" r="3.135" fill="currentColor" />
+        </g>
+    </g>
+</svg>

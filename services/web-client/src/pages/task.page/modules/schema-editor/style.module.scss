@@ -1,0 +1,89 @@
+.viewport :global {
+  display: flex;
+  flex: 1;
+  padding: 16px;
+  flex-direction: column;
+  row-gap: 16px;
+
+  :global > h4 {
+    margin: 8px 0;
+  }
+
+  :global > .group {
+    flex: 1;
+    display: flex;
+    column-gap: 8px;
+    box-sizing: border-box;
+  }
+
+  .group > .table {
+    width: 100%;
+  }
+
+  .group > .form {
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
+    transition: width 230ms ease-out;
+    background-color: white;
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+
+    hr {
+      height: 1px;
+      border: 0;
+      border-bottom: 1px solid #ddd;
+      margin: 0;
+    }
+
+    section,
+    h4 {
+      padding: 14px;
+      margin: 0;
+    }
+
+    section.detail {
+      display: grid;
+      flex-direction: column;
+      row-gap: 8px;
+
+      > span {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+      }
+    }
+
+    section.attr > .table {
+      height: 200px;
+    }
+
+    .outcome {
+      display: flex;
+      column-gap: 8px;
+      > .table {
+        height: 200px;
+        width: 100%;
+      }
+
+      > .pass {
+        outline: 2px solid limegreen;
+      }
+
+      > .fail {
+        outline: 2px solid crimson;
+      }
+    }
+
+    footer {
+      margin-top: auto;
+      height: 48px;
+      border-top: 1px solid #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 8px;
+    }
+  }
+}

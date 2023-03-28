@@ -1,0 +1,55 @@
+.list :global {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  width: 300px;
+  border-right: 1px solid #ddd;
+  position: relative;
+
+  display: flex;
+  row-gap: 8px;
+
+  padding: 16px;
+
+  background: #f6f6f6;
+
+  &__title {
+    padding: 16px;
+    text-align: center;
+  }
+
+  div.content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    flex: 1;
+    overflow: auto;
+  }
+}
+
+.item {
+  padding: 12px 16px;
+  border-bottom: 1px solid #cecece;
+  border-radius: 4px;
+  border: 1px dashed #ddd;
+  cursor: grab;
+  background: #fff;
+  transition: all 0.3s ease-out;
+
+  &:hover {
+    background: #fefefe;
+  }
+
+  &-name {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  &-code {
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #636363;
+  }
+}

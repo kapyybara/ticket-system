@@ -1,0 +1,25 @@
+.button {
+  display: flex;
+  padding: 0;
+  height: 32px;
+  align-items: center;
+  border: 0;
+  background: none;
+  overflow: hidden;
+  cursor: pointer;
+
+  :global {
+    div.dropdown {
+      display: flex;
+      width: 20px;
+      height: 100%;
+      background-color: #bbb;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+// scala - int, string, uuid,
+// master data khac
+// fields - display fields

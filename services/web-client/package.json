@@ -1,0 +1,40 @@
+{
+  "name": "web-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/dagre": "^0.7.48",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^3.1.0",
+    "sass": "^1.58.2",
+    "simple-git": "^3.17.0",
+    "vite": "^4.1.2",
+    "vite-plugin-svgr": "^2.4.0"
+  },
+  "dependencies": {
+    "@ithan/core": "workspace:*",
+    "@preact/signals-core": "^1.2.3",
+    "ag-grid-community": "^29.1.0",
+    "ag-grid-enterprise": "^29.1.0",
+    "classnames": "^2.3.2",
+    "dagre": "^0.8.5",
+    "preact-router": "^4.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.2",
+    "react-router-dom": "^6.6.2",
+    "react-select": "^5.7.0",
+    "reactflow": "^11.5.6",
+    "tippy.js": "^6.3.7"
+  }
+}

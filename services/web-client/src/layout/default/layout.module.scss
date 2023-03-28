@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400,600&display=swap');
+
+.layout :global {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  :local > header {
+    height: 32px;
+    background-color: #222;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    color: white;
+    column-gap: 12px;
+  }
+
+  :local > main {
+    display: flex;
+    flex: 1;
+  }
+
+  .page-menu {
+    min-width: 160px;
+    height: 100%;
+    background-color: #eee;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 8px;
+    position: relative;
+    border-right: 1px solid #ddd;
+    padding-top: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+    box-sizing: border-box;
+    z-index: 1;
+
+    > * {
+      height: 32px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      margin: 0;
+    }
+
+    > button {
+      cursor: pointer;
+      border-radius: 4px;
+      display: flex;
+      column-gap: 8px;
+      user-select: none;
+      justify-content: flex-start;
+
+      &:hover {
+        background-color: #ddd;
+      }
+
+      &.active {
+        background-color: #222;
+        color: white;
+      }
+
+      span[notification-count] {
+        margin-left: auto;
+        height: 16px;
+        min-width: 22px;
+        display: flex;
+        padding: 0 8px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 16px;
+        color: white;
+        font-size: 12px;
+
+        ~ [notification-count] {
+          margin-left: initial;
+        }
+
+        &[notification-count='warn'] {
+          background-color: orange;
+        }
+
+        &[notification-count='alert'] {
+          background-color: crimson;
+        }
+
+        &[notification-count='normal'] {
+          background-color: #888;
+        }
+
+        &[notification-count='good'] {
+          background-color: green;
+        }
+      }
+    }
+
+    > hr {
+      height: 10px;
+      &::after {
+        content: '';
+        position: absolute;
+        height: 1px;
+        width: 100%;
+        background-color: #ddd;
+      }
+    }
+
+    button.close {
+      position: absolute;
+      background-color: #bbb;
+      width: 6px;
+      right: -6px;
+      bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        background-color: #ddd;
+      }
+
+      &:after {
+        content: '|';
+      }
+    }
+
+    &.mini {
+      transition: min-width 240ms ease-out;
+
+      min-width: 48px;
+
+      > button > span {
+        display: none;
+      }
+    }
+  }
+
+  .page-header {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+    padding: 0 16px;
+
+    border-bottom: 1px solid #ddd;
+
+    > *:not(button) {
+      height: 42px;
+      align-items: center;
+      display: flex;
+      user-select: none;
+      cursor: pointer;
+      &:global {
+        &.active {
+          position: relative;
+          &:after {
+            content: '';
+            height: 2px;
+            background-color: orange;
+            width: 100%;
+            position: absolute;
+            bottom: -2px;
+          }
+        }
+      }
+    }
+
+    > hr {
+      margin: 0;
+      border: 0;
+      border-left: 1px solid #ddd;
+    }
+
+    > *[nav-path],
+    .item {
+      display: flex;
+      column-gap: 8px;
+    }
+  }
+
+  .page-view {
+    flex: 1;
+  }
+
+  span.resizer-y {
+    width: 8px;
+    height: 100%;
+    position: absolute;
+    left: -4px;
+    top: 0;
+
+    &:hover,
+    &.dragging {
+      cursor: ew-resize;
+      opacity: 0.5;
+      &:after {
+        border-radius: 2px;
+        content: '';
+        background-color: #bbb;
+        position: absolute;
+        width: 4px;
+        height: calc(100% - 4px);
+        left: 50%;
+        transform: translateX(-50%);
+        top: 2px;
+      }
+    }
+  }
+}

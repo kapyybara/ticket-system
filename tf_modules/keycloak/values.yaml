@@ -1,0 +1,7 @@
+extraEnv: |
+  - name: KC_HOSTNAME_STRICT      
+    value: "false"
+  - name: KC_PROXY                
+    value: "edge"
+  - name: PROXY_ADDRESS_FORWARDING
+    value: "true"

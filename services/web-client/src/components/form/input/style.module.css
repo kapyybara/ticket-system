@@ -1,0 +1,23 @@
+.input {
+  display: flex;
+  padding: 0;
+  min-height: 38px;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  outline: none;
+  box-sizing: border-box;
+  padding: 2px 8px;
+}
+.input:hover {
+  border: 1px solid #bbb;
+}
+.input:focus {
+  outline: 2px solid #2684ff;
+}
+.input:required:invalid {
+  outline: 2px solid crimson;
+}
+.input:global.error {
+  outline: 2px solid crimson;
+}/*# sourceMappingURL=style.module.css.map */

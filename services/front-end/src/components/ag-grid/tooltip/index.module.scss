@@ -1,0 +1,12 @@
+.tooltip {
+	border: 1px #ff6f59 solid;
+	color: #fc5137;
+	background: #fde3df;
+	padding: 8px 16px;
+	border-radius: 8px;
+	display: flex;
+	flex-direction: row;
+	gap: 8px;
+	align-items: center;
+	transition: all 0.1s ease-in;
+}
