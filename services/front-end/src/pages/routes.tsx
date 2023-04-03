@@ -6,17 +6,9 @@ import { MasterData } from './master-data.page'
 
 export const _url = signal('')
 
-function handleUrl(e: { url: string }) {
+export const handleUrl = (e: { url: string }) => {
 	_url.value = e.url
 }
-
-export const App = () => (
-	<DefaultLayout>
-		<Router onChange={e => handleUrl(e)}>
-			{navs.map(page => page.element)}
-		</Router>
-	</DefaultLayout>
-)
 
 export const navs = [
 	{

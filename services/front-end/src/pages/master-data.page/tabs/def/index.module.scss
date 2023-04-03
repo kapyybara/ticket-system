@@ -40,4 +40,9 @@
 		width: 100%;
 		flex: 1;
 	}
+
+	&:disabled {
+		filter: grayscale(90%);
+		background: #c5c5c5;
+	}
 }

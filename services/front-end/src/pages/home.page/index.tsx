@@ -1,7 +1,6 @@
 import { signal } from '@preact/signals'
-import { Input } from '../../components/form/input'
 import { SelectDropDown } from '@/components/form/select-dropdown'
-import { options } from 'preact'
+import { useNotify } from '@/utils/notify'
 
 export function Home() {
 	const key = signal('')
@@ -11,20 +10,20 @@ export function Home() {
 		{ value: 'user', label: 'User' },
 		{ value: 'dep', label: 'Dep' },
 	])
+
+	const notify = useNotify()
+
+	const handleClick = () => {
+		notify.success('Hihi success haah')
+		notify.success('Hihi success haah')
+		notify.warn('Hihi success haah')
+		notify.success('Hihi success haah')
+		notify.error('Hihi success haah')
+	}
+
 	return (
 		<div>
-			<SelectDropDown
-				searchKey={key}
-				onSearch={v => (key.value = v)}
-				options={options}
-				onChange={v => {
-					console.log(options.value.find(i => (i.value = v)))
-				}}
-				placeHolder="Type to search"
-				filterOptions={(v, i, a) =>
-					v.label.toLowerCase().includes(key.value.toLocaleLowerCase())
-				}
-			/>
+			<button onClick={handleClick}>Noti tititit</button>
 		</div>
 	)
 }

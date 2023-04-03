@@ -9,7 +9,9 @@ import NotifyError from './component/error'
 import { Timer } from '../timer'
 import NotifyWarn from './component/warn'
 
-type NotifyOptions = {}
+type NotifyOptions = {
+	delay: number
+}
 type NotifyProviderProps = {
 	children: any
 }
@@ -20,31 +22,36 @@ export type NotifyType = {
 	timer: Timer
 }
 const notifies = signal<NotifyType[]>([])
-class Notify {
-	constructor() {
+export class Notify {
+	options: NotifyOptions
+	constructor(options?: NotifyOptions) {
+		this.options = {
+			delay: 5000,
+		}
+		this.options.delay = options?.delay || 5000
 		notifies.value = []
 	}
-	public success(msg: string, options?: NotifyOptions) {
+	public success(msg: string) {
 		const id = uuid()
 		const timer = new Timer(() => {
 			notifies.value = notifies.value.filter(i => i.id !== id)
-		}, 5000)
+		}, this.options.delay)
 		const newNoti: NotifyType = { id, msg, type: 'SUCCESS', timer }
 		notifies.value = notifies.value.concat([newNoti])
 	}
-	public warn(msg: string, options?: NotifyOptions) {
+	public warn(msg: string) {
 		const id = uuid()
 		const timer = new Timer(() => {
 			notifies.value = notifies.value.filter(i => i.id !== id)
-		}, 5000)
+		}, this.options.delay)
 		const newNoti: NotifyType = { id, msg, type: 'WARN', timer }
 		notifies.value = notifies.value.concat([newNoti])
 	}
-	public error(msg: string, options?: NotifyOptions) {
+	public error(msg: string) {
 		const id = uuid()
 		const timer = new Timer(() => {
 			notifies.value = notifies.value.filter(i => i.id !== id)
-		}, 5000)
+		}, this.options.delay)
 		const newNoti: NotifyType = { id, msg, type: 'ERROR', timer }
 		notifies.value = notifies.value.concat([newNoti])
 	}

@@ -5,6 +5,6 @@ import './index.css'
 import './assets/styles/typography.css'
 import './assets/styles/reset.css'
 import './assets/styles/ag-grid.scss'
-import { App } from './pages/routes'
+import { App } from './app'
 
 render(<App />, document.getElementById('app') as HTMLElement)

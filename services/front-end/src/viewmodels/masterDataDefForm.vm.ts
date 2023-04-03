@@ -13,6 +13,7 @@ import { FieldDef, FieldType, MasterDataDef } from '@ithan/core'
 
 import { ErrorTooltip } from '@/components/ag-grid/tooltip'
 import { SelectorRenderer } from '@/components/ag-grid/type-selector/renderer'
+import { Notify } from '@/utils/notify'
 
 export type FieldData = {
 	id: string
@@ -25,6 +26,7 @@ export type FieldData = {
 
 export class MasterDataFormVM<E extends BaseError, TData = FieldData> {
 	private _masterDataDef: MasterDataDef
+	private _notis: Notify
 
 	private _name: Signal<string>
 	private _code: Signal<string>
@@ -50,6 +52,7 @@ export class MasterDataFormVM<E extends BaseError, TData = FieldData> {
 		masterDataDef.setName('')
 		masterDataDef.setCode('')
 		masterDataDef.setDescription('')
+		this._notis = new Notify()
 	}
 	public get name(): ReadonlySignal<string> {
 		return computed(() => this._name.value)
@@ -178,16 +181,6 @@ export class MasterDataFormVM<E extends BaseError, TData = FieldData> {
 			tooltipMouseTrack: true,
 		}
 	}
-	public static searchMasterDataDef(key: string): MasterDataDef[] {
-		// ! Call api here
-		const rs = masterDataDefmoc
-		const nkey = key.toLocaleLowerCase()
-		return rs.filter(
-			i =>
-				i.name.toLocaleLowerCase().includes(nkey) ||
-				i.code.toLocaleLowerCase().includes(nkey),
-		)
-	}
 	public setName = (name: string) => {
 		this._name.value = name
 		try {
@@ -283,7 +276,34 @@ export class MasterDataFormVM<E extends BaseError, TData = FieldData> {
 		this._rowData.value = this._rowData.value.concat([newField])
 	}
 	public submit = () => {
-		console.log(this._masterDataDef)
+		let data
+		try {
+			data = this._masterDataDef.build()
+		} catch (e) {
+			if (e instanceof MasterDataDefError) {
+				e.list.map(i => this._notis.error(i.property + ' ' + i.code))
+			}
+			throw e
+		}
+		data = {
+			name: data.name,
+			code: data.name,
+			description: data.description,
+			form: data.form,
+			displayField: data.displayField,
+		}
+		console.log(data)
+	}
+
+	public static searchMasterDataDef(key: string): MasterDataDef[] {
+		// ! Call api here
+		const rs = masterDataDefmoc
+		const nkey = key.toLocaleLowerCase()
+		return rs.filter(
+			i =>
+				i.name.toLocaleLowerCase().includes(nkey) ||
+				i.code.toLocaleLowerCase().includes(nkey),
+		)
 	}
 }
 
