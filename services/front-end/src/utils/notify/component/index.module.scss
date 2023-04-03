@@ -1,0 +1,92 @@
+.notify {
+	position: relative;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+	width: 300px;
+	height: fit-content;
+
+	padding: 24px 32px;
+	z-index: 999;
+	border-radius: 8px;
+	box-shadow: 0px 0px 16px #9999996f;
+
+	transform: translateX(0);
+	animation: left-in 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1 forwards;
+	cursor: pointer;
+	&::after {
+		content: '';
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		width: 100%;
+		height: 4px;
+		background: rgb(2, 0, 36);
+		background-image: linear-gradient(
+			to left top,
+			#d16ba5,
+			#c777b9,
+			#ba83ca,
+			#aa8fd8,
+			#9a9ae1,
+			#8aa7ec,
+			#79b3f4,
+			#69bff8,
+			#52cffe,
+			#41dfff,
+			#46eefa,
+			#5ffbf1
+		);
+		animation: down-time linear 5s 1 forwards;
+	}
+	&:hover::after {
+		animation-play-state: paused;
+	}
+}
+
+.success {
+	color: #207d50;
+	background: #b6ffdb;
+}
+
+.error {
+	color: #932828;
+	background: #ffdfdf;
+}
+
+.warn {
+	color: #938828;
+	background: #fffedf;
+}
+
+.msg {
+	flex: 1;
+	text-align: end;
+}
+
+.close {
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	font-size: 16px;
+}
+
+@keyframes left-in {
+	0% {
+		transform: translateX(-150%);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@keyframes down-time {
+	0% {
+		width: 100%;
+	}
+	100% {
+		width: 0%;
+	}
+}
