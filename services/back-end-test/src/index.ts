@@ -1,11 +1,23 @@
-import { InitTasks } from './init'
 import bodyParser from 'body-parser'
 import express, { Application, Request, Response } from 'express'
+import cors from 'cors'
+
+import { InitTasks } from './init'
+
 import { masterDataDefRoute } from './routes/masterdatadef.route'
 import { router } from './routes'
 
 const app: Application = express()
 
+var whitelist =
+	process.env.NODE_ENV === 'production'
+		? ['http://127.0.0.1:5173', 'http://example2.com']
+		: '*'
+var corsOptions = {
+	origin: whitelist,
+}
+
+app.use(cors(corsOptions))
 app.use(bodyParser.json())
 
 app.use(router)

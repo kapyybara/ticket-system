@@ -1,5 +1,5 @@
 import { TaskStatusType } from './TaskRun.model'
-import { Employee } from '@src/models/AgentGroup.model'
+import { Employee } from './AgentGroup.model'
 import { FieldDef } from './FieldDef.model'
 import { FieldValue } from './FieldValue.model'
 import { TicketDef } from './TicketDef.model'

@@ -84,7 +84,7 @@ export class TaskRun {
 	 */
 	setStatus(status: TaskStatusType): TaskStatusType {
 		this._status = status
-		return
+		return status
 	}
 
 	/**

@@ -82,20 +82,20 @@ describe('FieldDef.build', () => {
 		}
 		expect(receivedError.list).toEqual(expect.arrayContaining(expectError.list))
 	})
-	it('Báo lỗi nếu code chưa có giá trị', () => {
-		fieldDef.setName('Abc')
-		fieldDef.setCode('ABC')
-		expectError.addError({
-			property: 'type',
-			code: 'ISEMPTY',
-		})
-		try {
-			fieldDef.build()
-		} catch (error) {
-			receivedError = error as FieldDefError
-		}
-		expect(receivedError.list).toEqual(expect.arrayContaining(expectError.list))
-	})
+	// it('Báo lỗi nếu code chưa có giá trị', () => {
+	// 	fieldDef.setName('Abc')
+	// 	fieldDef.setCode('ABC')
+	// 	expectError.addError({
+	// 		property: 'type',
+	// 		code: 'ISEMPTY',
+	// 	})
+	// 	try {
+	// 		fieldDef.build()
+	// 	} catch (error) {
+	// 		receivedError = error as FieldDefError
+	// 	}
+	// 	expect(receivedError.list).toEqual(expect.arrayContaining(expectError.list))
+	// })
 	it('Báo lỗi nếu name, code, type chưa có giá tị', () => {
 		expectError.addError({
 			property: 'name',
@@ -116,10 +116,6 @@ describe('FieldDef.build', () => {
 		}
 		expect(receivedError.list).toEqual(
 			expect.arrayContaining([
-				{
-					property: 'type',
-					code: 'ISEMPTY',
-				},
 				{
 					property: 'code',
 					code: 'ISEMPTY',

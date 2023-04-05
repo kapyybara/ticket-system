@@ -33,9 +33,9 @@ export class FieldDef {
 	private _type!: FieldType
 
 	constructor() {
-		this._code = null
-		this._name = null
-		this._type = null
+		this._code = ''
+		this._name = ''
+		this._type = { type: 'SCALAR', target: 'string' }
 	}
 
 	public get id(): string {

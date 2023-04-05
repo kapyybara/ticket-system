@@ -26,7 +26,8 @@ type AgPreactUiProps<TData = any> = Omit<
 	setGridApi?: (gridApi: GridApi<TData>, columnApi: ColumnApi) => void
 	children?: any
 	rowData: Signal<TData[]>
-	columnDefs: Signal<(ColDef<TData> | ColGroupDef<TData>)[]>
+	// columnDefs: Signal<(ColDef<any> | ColGroupDef<any>)[]>
+	columnDefs: Signal<any[]>
 	class?: any
 	onGridReady?: (...arg: any[]) => any
 }
