@@ -6,6 +6,10 @@
 	background: #0083c9;
 }
 
+button {
+	cursor: pointer;
+}
+
 button:disabled {
 	background: #c4c4c4;
 	cursor: not-allowed;

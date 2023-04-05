@@ -2,14 +2,17 @@ import clx from 'classnames'
 import { AgGridPreact } from '@data-grid/preact'
 
 import { TextErea } from '@/components/form/text-area'
-import { useMasterDataFormVM } from '@/viewmodels/masterDataDefForm.vm'
+import {
+	MasterDataDefFormVM,
+	useMasterDataFormVM,
+} from '@/viewmodels/masterDataDefForm.vm'
 import { Input } from '@/components/form/input'
 import $ from './index.module.scss'
 import './index.scss'
 import { AddButton } from '@/components/form/button/add'
 import { SubmitButton } from '@/components/form/button/submit'
 
-export function MasterDataDef() {
+export function MasterDataDef(props: { form: MasterDataDefFormVM }) {
 	const {
 		name,
 		code,
@@ -23,8 +26,9 @@ export function MasterDataDef() {
 		setDescription,
 		addField,
 		submit,
-	} = useMasterDataFormVM()
-	console.log(!errors.value.name)
+		readySubmit,
+	} = props.form
+	console.warn('Def page render')
 
 	return (
 		<div class={$.mddef}>
@@ -64,19 +68,7 @@ export function MasterDataDef() {
 				</div>
 			</div>
 			<div class={$.mddef__footer}>
-				<SubmitButton
-					onClick={submit}
-					disabled={
-						!!(
-							!name.value ||
-							!!errors.value.name ||
-							!code.value ||
-							!!errors.value.code ||
-							!rowData.value.length ||
-							!!errors.value.fields.length
-						)
-					}
-				/>
+				<SubmitButton onClick={submit} disabled={readySubmit} />
 			</div>
 		</div>
 	)

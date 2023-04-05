@@ -16,7 +16,7 @@
 		"noEmit": true,
 		"jsx": "react-jsx",
 		"jsxImportSource": "preact",
-		"types": ["node"],
+		// "types": ["node"],
 		"paths": {
 			"@/*": ["./src/*"]
 		}

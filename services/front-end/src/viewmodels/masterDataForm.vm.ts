@@ -1,19 +1,21 @@
-import { masterDataDefmoc } from './.moct'
-import { useMemo } from 'preact/hooks'
-import {
-	BaseError,
-	FieldDefError,
-	MasterDataDefError,
-} from '@ithan/core/src/models/exceptions'
 import { ReadonlySignal, Signal, computed, signal } from '@preact/signals'
-import { ColDef, ColGroupDef, ValueParserParams } from 'ag-grid-community'
+import { useMemo } from 'preact/hooks'
+import { ValueParserParams } from 'ag-grid-community'
 import { v4 as uuid } from 'uuid'
 
 import { FieldDef, FieldType, MasterDataDef } from '@ithan/core'
+import {
+	FieldDefError,
+	MasterDataDefError,
+} from '@ithan/core/src/models/exceptions'
 
-import { ErrorTooltip } from '@/components/ag-grid/tooltip'
+import { MasterDataDefService as service } from '@/services/masterDataDef.service'
 import { SelectorRenderer } from '@/components/ag-grid/type-selector/renderer'
+import { ErrorTooltip } from '@/components/ag-grid/tooltip'
+import { ServiceError } from '@/services'
 import { Notify } from '@/utils/notify'
+
+import { masterDataDefmoc } from './.moct'
 
 export type FieldData = {
 	id: string
@@ -24,7 +26,7 @@ export type FieldData = {
 	type: Signal<FieldType>
 }
 
-export class MasterDataFormVM<E extends BaseError, TData = FieldData> {
+export class MasterDataDefFormVM {
 	private _masterDataDef: MasterDataDef
 	private _notis: Notify
 
@@ -37,6 +39,7 @@ export class MasterDataFormVM<E extends BaseError, TData = FieldData> {
 	private _codeError: Signal<MasterDataDefError | null>
 	private _descriptionError: Signal<MasterDataDefError | null>
 	private _fieldsError: Signal<MasterDataDefError[]>
+
 	constructor() {
 		this._name = signal('')
 		this._code = signal('')
@@ -181,6 +184,19 @@ export class MasterDataFormVM<E extends BaseError, TData = FieldData> {
 			tooltipMouseTrack: true,
 		}
 	}
+	public get readySubmit(): ReadonlySignal<any> {
+		return computed(
+			() =>
+				!!(
+					!this.name.value ||
+					!!this.errors.value.name ||
+					!this.code.value ||
+					!!this.errors.value.code ||
+					!this.rowData.value.length ||
+					!!this.errors.value.fields.length
+				),
+		)
+	}
 	public setName = (name: string) => {
 		this._name.value = name
 		try {
@@ -237,9 +253,9 @@ export class MasterDataFormVM<E extends BaseError, TData = FieldData> {
 
 		const handleOnsearch = (v: string) => {
 			searchKey.value = v
-			const masterDataDefFromAPI = MasterDataFormVM.searchMasterDataDef(v).map(
-				i => ({ label: i.name, value: i.code, masterDataDef: i }),
-			)
+			const masterDataDefFromAPI = MasterDataDefFormVM.searchMasterDataDef(
+				v,
+			).map(i => ({ label: i.name, value: i.code, masterDataDef: i }))
 			options.value = options.value
 				.concat(masterDataDefFromAPI)
 				.filter((mdd, i, array) => {
@@ -275,24 +291,31 @@ export class MasterDataFormVM<E extends BaseError, TData = FieldData> {
 
 		this._rowData.value = this._rowData.value.concat([newField])
 	}
-	public submit = () => {
+	public submit = async () => {
 		let data
+		let result
+
 		try {
 			data = this._masterDataDef.build()
 		} catch (e) {
 			if (e instanceof MasterDataDefError) {
 				e.list.map(i => this._notis.error(i.property + ' ' + i.code))
 			}
-			throw e
+			return
 		}
-		data = {
-			name: data.name,
-			code: data.name,
-			description: data.description,
-			form: data.form,
-			displayField: data.displayField,
+
+		try {
+			result = await service.create(data)
+		} catch (error) {
+			if (error instanceof ServiceError) {
+				error.error._list.map((e: any) =>
+					this._notis.error(e.property + ' ' + e.code),
+				)
+			}
+			return
 		}
-		console.log(data)
+
+		this._notis.success('Tạo thành công ' + result.id)
 	}
 
 	public static searchMasterDataDef(key: string): MasterDataDef[] {
@@ -308,6 +331,5 @@ export class MasterDataFormVM<E extends BaseError, TData = FieldData> {
 }
 
 export const useMasterDataFormVM = () => {
-	const vm = useMemo(() => new MasterDataFormVM(), [])
-	return vm
+	return useMemo(() => new MasterDataDefFormVM(), [])
 }
